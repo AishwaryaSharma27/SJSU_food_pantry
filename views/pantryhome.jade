@@ -1,0 +1,21 @@
+extends homelayout
+	
+block content
+	h1= 'Welcome to SJSU Food Pantry'
+	form(action = "/zones" method = "POST")
+		.grid-container
+			.grid-item
+				img(src='/images/Zone1.jpg')
+				p Zone 1
+				button(name = "mcd" type = "Submit" value="mcd" class = "fd_button") View Zone1 Items
+			.grid-item
+				img(src='/images/Zone2.jpg')
+				p Zone 2
+				button(name = "tcbl" type = "Submit" value="tcbl" class = "fd_button") View Zone2 Items
+			.grid-item
+				img(src='/images/zone3.jpg')
+				p Zone 3
+				button(name = "chtbvn" type = "Submit" value="chtbvn" class = "fd_button") View Zone3 Items
+			.grid-item
+				img(src='images/zone4.jpg')
+				p Zone 4
