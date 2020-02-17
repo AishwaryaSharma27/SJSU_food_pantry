@@ -41,12 +41,23 @@ router.post('/zones', function(req, res) {
 router.post('/cart', function(req, res) {
     console.log(req.body);
     var arr1 = Object.keys(req.body);
-    cart=arr1;
+    // cart.push(arr1);
     console.log(arr1);
+    arr1.map(item=>{
+    	cart.push(item);
+    })
+    res.render('../views/pantryhome', { items: cart });
+});
+
+router.get('/cart', function(req, res) {
+    // console.log(req.body);
+    // var arr1 = Object.keys(req.body);
+    // cart=arr1;
+    // console.log(arr1);
     // req.body(item=>{
     // 	registeredUsers.push(items);
     // })
-    res.render('../views/itemcart', { items: arr1 });
+    res.render('../views/itemcart', { items: cart });
 });
 
 router.post('/delete',function(req,res){
