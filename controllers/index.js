@@ -121,6 +121,6 @@ router.post('/delete',function(req,res){
 });
 
 router.post('/placeorder', function(req,res){
-	console.log("PlacedOrder")
+	res.render('../views/orderplace');
 });
 module.exports = router;
