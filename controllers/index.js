@@ -38,7 +38,7 @@ router.post('/zones', function(req, res) {
     }
 });
 
-router.post('/billing', function(req, res) {
+router.post('/cart', function(req, res) {
     console.log(req.body);
     var arr1 = Object.keys(req.body);
     cart=arr1;
