@@ -2,11 +2,11 @@ extends homelayout
 
 block content
 	h1= 'Welcome to Zone3'
-	h3 Pantry:
+	
 	if(name=="zone3")
 		form(action = "/cart" method = "POST")
 			
-			h3 Select your Order:
+			h3 Select your Order
 			.grid-container
 				.grid-item
 					p    
@@ -24,6 +24,8 @@ block content
 					p meat
 					input(type='checkbox' name='meat' value='meat')
 					p    
-					button(type = "Submit") Add to Cart
+					button(type = "Submit", class = 'order_button') Add to Cart
+
+
 
 
