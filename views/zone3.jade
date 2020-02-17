@@ -1,0 +1,29 @@
+extends layout
+
+block content
+	h1= 'Welcome to Zone3'
+	h3 Pantry:
+	if(name=="zone3")
+		form(action = "/billing" method = "POST")
+			
+			h3 Select your Order:
+			.grid-container
+				.grid-item
+					p    
+					img(src='/images/milk.jpg')
+					p milk	
+					input(type='checkbox',name='milk',value='milk')
+				.grid-item
+					p
+					img(src='/images/cheese.jpg')
+					p cheese
+					input(type='checkbox',name='cheese',value='cheese')
+				.grid-item
+					p
+					img(src='/images/meat.jpg')
+					p meat
+					input(type='checkbox' name='meat' value='meat')
+					p    
+					button(type = "Submit") Order
+extends layout
+
