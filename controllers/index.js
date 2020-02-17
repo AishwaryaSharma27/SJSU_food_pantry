@@ -50,11 +50,62 @@ router.post('/billing', function(req, res) {
 });
 
 router.post('/delete',function(req,res){
+
     if(req.body.potato){
 		cart = cart.filter(function(item) {
 			return item !== "potato"
 		})
-	}
+    }
+    else if(req.body.chilli){
+		cart = cart.filter(function(item) {
+			return item !== "chilli"
+		})
+    }
+
+    else if(req.body.apple){
+		cart = cart.filter(function(item) {
+			return item !== "apple"
+		})
+    }
+
+    else if(req.body.freshcutcorns){
+		cart = cart.filter(function(item) {
+			return item !== "freshcutcorns"
+		})
+    }
+
+    else if(req.body.greenBeans){
+		cart = cart.filter(function(item) {
+			return item !== "greenBeans"
+		})
+    }
+
+    else if(req.body.mushroomsoup){
+		cart = cart.filter(function(item) {
+			return item !== "mushroomsoup"
+		})
+    }
+
+    else if(req.body.milk){
+		cart = cart.filter(function(item) {
+			return item !== "milk"
+		})
+    }
+
+    else if(req.body.cheese){
+		cart = cart.filter(function(item) {
+			return item !== "cheese"
+		})
+    }
+
+    else if(req.body.meat){
+		cart = cart.filter(function(item) {
+			return item !== "meat"
+		})
+    }
+
+   
+    
 	res.render('../views/itemcart',{items:cart});
 });
 
