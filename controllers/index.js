@@ -10,6 +10,12 @@ router.get('/', function(req, res)
 	res.render('../views/login', { title: ''});
 });
 
+router.get('/login', function(req, res)
+{
+    console.log("Order placed")
+	// res.render('../views/login', { title: ''});
+});
+
 
  router.post('/foodhome', function(req,res){
  if(req.body.Logout){

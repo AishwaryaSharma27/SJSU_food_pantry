@@ -4,14 +4,16 @@ doctype html
 html
 	div.bgimg
 		style.
-			h1,h3 { font-family: Rockwell ;font-size: 50px; color:#ff6347;}
-			h1,h3 { font-family: Rockwell ;font-size: 50px; color:#ff6347;}
-			p {font-family: Rockwell;font-size: 30px; color:#FF;}
+			//- h1,h3 { font-family: Rockwell ;font-size: 50px; color:#ff6347;}
+			//- h1,h3 { font-family: Rockwell ;font-size: 50px; color:#ff6347;}
+			//- p {font-family: Rockwell;font-size: 30px; color:#FF;}
 		head
-			title=  QuickMeal
-			img(src='/images/logo.png')
-			
-			
+			div(class='header_class')
+				h2= 'Contact Us!'
+				img(class='logo' src='/images/logo.png')
+				//- form(action = "/login" method = "POST")	
+				a(href="/login")	        			
+					img(class='cart' src='/images/icons8-favorite-cart-64.png')
 			link(rel='stylesheet', href='/css/style.css')
 		body 
 			block content
