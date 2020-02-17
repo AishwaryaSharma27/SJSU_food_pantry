@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var index = require('./index');
+var index = require('./controllers/index');
 var app = express();
 
 //View engine setup
@@ -18,4 +18,6 @@ app.use(session( {secret: "String for encrypting cookies." } ));
 app.use('/', index);
 
 module.exports = app;
-app.listen(3000);
+app.listen(3001,function(){
+    console.log("Node Server running on port 3000");
+});
