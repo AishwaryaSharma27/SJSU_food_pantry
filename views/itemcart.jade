@@ -1,0 +1,16 @@
+html
+  style.
+     h1,h3 { font-family: Rockwell ;font-size: 50px; color:#ff6347;}
+     p {font-family: Rockwell;font-size: 30px; color:#FF;}
+  head
+     link(rel='stylesheet', href='/stylesheets/style.css')  
+  body
+    div(style='width: 50%; height: 50%; float:left;')
+      h1 Please review your order
+      for name in items
+        form(action="/delete", method='post')
+          h2=name
+          button(name = name type = "Submit" value=name) Delete    
+    div(style='width: 50%; height: 50%; float:right;')  
+      form(action="/placeorder",method='post')        
+        button(type='submit', onclick='toggle_visibility()')  Place Order   

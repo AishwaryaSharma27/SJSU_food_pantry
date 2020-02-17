@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 
-var data = [];
+var cart=[];
 
 router.get('/', function(req, res) {
     res.render('../views/login', { title: '' });
@@ -41,12 +41,24 @@ router.post('/zones', function(req, res) {
 router.post('/billing', function(req, res) {
     console.log(req.body);
     var arr1 = Object.keys(req.body);
+    cart=arr1;
     console.log(arr1);
     // req.body(item=>{
     // 	registeredUsers.push(items);
     // })
-    //res.render('../views/billing', { items: arr1 });
+    res.render('../views/itemcart', { items: arr1 });
 });
 
+router.post('/delete',function(req,res){
+    if(req.body.potato){
+		cart = cart.filter(function(item) {
+			return item !== "potato"
+		})
+	}
+	res.render('../views/itemcart',{items:cart});
+});
 
+router.post('/placeorder', function(req,res){
+	console.log("PlacedOrder")
+});
 module.exports = router;
