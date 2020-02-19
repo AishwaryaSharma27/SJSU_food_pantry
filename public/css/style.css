@@ -44,13 +44,8 @@ p{
     color: white;
 }
 
-.bgimg {
-    /* background-image: url("/images/sjsu.png"); */
-  
-	/* Full height */
+.bgimage {
 	height: 100%;
-  
-	/* Center and scale the image nicely */
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -59,7 +54,7 @@ p{
 
 html{
 	text-align: center;
-	background-image: url("/images/0.jpeg");
+	background-image: url("/images/background.jpeg");
     background-attachment: fixed;
     
 	height: 100%;
@@ -71,7 +66,7 @@ html{
   }
 
 
-.fd_button{ 
+.zone_button{ 
 	background:#0388fc; 
 	border:none; 
 	border-radius: 10px; 
@@ -84,20 +79,17 @@ html{
 	color:#FFFFFF; 
 }
 
-.login_button{
-    background:rgb(182, 135, 138); 
-	border:none; 
-	border-radius: 10px; 
-	width:200px; 
-	height:36px; 
-	cursor:pointer; 
-	font-family:open Sans; 
-	font-weight:700px; 
-	font-size:30px; 
-	color:#FFFFFF; 
+.loginForm {
+	border: solid 5px #0388fc;
+	width: 500px;
+	height: 600px;
+	margin-left: 33%;
+	margin-right: 25%;
+	background-color: lightblue;
 }
+
 .order_button{
-    background:rgb(214, 61, 74); 
+    background:#0388fc; 
 	border:none; 
 	border-radius: 10px; 
 	width:200px; 

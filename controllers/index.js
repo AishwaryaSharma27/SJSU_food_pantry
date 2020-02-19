@@ -8,25 +8,18 @@ router.get('/', function(req, res) {
     res.render('../views/login', { title: '' });
 });
 
-router.get('/login', function(req, res) {
-    console.log("Order placed")
-        // res.render('../views/login', { title: ''});
-});
 
 
 router.post('/foodhome', function(req, res) {
-    if (req.body.Logout) {
-        res.render('../views/login', { title: '' });
-    } else if (req.body.username === 'user' && req.body.password === 'password') {
+    if (req.body.username === 'test' && req.body.password === 'test') {
         res.render('../views/pantryhome', { title: req.body.username });
     } else {
-        res.send('Wrong username or password');
+        res.send('Wrong username or password. Please enter test as username and password');
     }
 });
 
 
 router.post('/zones', function(req, res) {
-    console.log(req.body);
     if (req.body.Logout) {
         res.render('../views/login', { title: 'Login!' });
     } else if (req.body.zone1) {
@@ -39,10 +32,7 @@ router.post('/zones', function(req, res) {
 });
 
 router.post('/cart', function(req, res) {
-    console.log(req.body);
     var arr1 = Object.keys(req.body);
-    // cart.push(arr1);
-    console.log(arr1);
     arr1.map(item=>{
     	cart.push(item);
     })
@@ -50,13 +40,6 @@ router.post('/cart', function(req, res) {
 });
 
 router.get('/cart', function(req, res) {
-    // console.log(req.body);
-    // var arr1 = Object.keys(req.body);
-    // cart=arr1;
-    // console.log(arr1);
-    // req.body(item=>{
-    // 	registeredUsers.push(items);
-    // })
     res.render('../views/itemcart', { items: cart });
 });
 

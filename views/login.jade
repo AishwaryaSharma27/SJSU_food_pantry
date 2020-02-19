@@ -1,15 +1,12 @@
-extends layout_login
+extends loginlayout
 
 block content
     h1= title
-        form(action = "/foodhome" method = "POST")		
+        form(action = "/foodhome" method = "POST" class="loginForm")		
             p Username:
             input(name = "username" type = "text" required placeholder = "Enter username" class = "user_login")
-            br
             br
             p Password:
             input(name = "password" type = "password" required placeholder = "Enter password" class = "user_password")
             br
-            br
-            br 
-            button(type = "Submit", class = "login_button") Student Login
+            button(type = "Submit" class="zone_button") Student Login
