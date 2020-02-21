@@ -3,21 +3,26 @@ var router = express.Router();
 
 
 var cart=[];
+var user = [];
 
 router.get('/', function(req, res) {
+  let sess = req.session;
+  if(sess.studentId)
+  {
+    res.render('../views/pantryhome', { title: sess.studentId });
+  }
     res.render('../views/login', { title: '' });
 });
 
-
-
 router.post('/foodhome', function(req, res) {
+  let sess = req.session;
     if (req.body.username === 'test' && req.body.password === 'test') {
+        sess.studentId = req.body.username;
         res.render('../views/pantryhome', { title: req.body.username });
     } else {
         res.send('Wrong username or password. Please enter test as username and password');
     }
 });
-
 
 router.post('/zones', function(req, res) {
     if (req.body.Logout) {
@@ -41,6 +46,21 @@ router.post('/cart', function(req, res) {
 
 router.get('/cart', function(req, res) {
     res.render('../views/itemcart', { items: cart });
+});
+
+router.get('/signup', function(req, res) {
+  res.render('../views/signup');
+});
+
+router.post('/signup', function(req, res)
+{
+  user.push({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    studentId: req.body.studentId,
+    password: req.body.password,
+    confirmPassword: req.body.confirmPassword
+  })
 });
 
 router.post('/delete',function(req,res){
@@ -97,13 +117,19 @@ router.post('/delete',function(req,res){
 			return item !== "meat"
 		})
     }
-
-   
-    
 	res.render('../views/itemcart',{items:cart});
 });
 
 router.post('/placeorder', function(req,res){
 	res.render('../views/orderplace');
+});
+
+router.get('/logout', function(req, res){
+  req.session.destroy((err) => {
+      if(err) {
+        return console.log(err);
+      }
+      res.redirect('/');
+  });
 });
 module.exports = router;
