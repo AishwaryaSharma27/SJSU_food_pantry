@@ -1,24 +1,3 @@
-//- //- extends loginlayout
-
-//- block content
-//-     form(action = "/signup" method = "POST")	
-//-         p First Name:
-//-         input(name = "firstName" type = "text" required placeholder = "Enter First Name" class = "user_login")
-//-         br	
-//-         p Last Name:
-//-         input(name = "lastName" type = "text" required placeholder = "Enter Last Name" class = "user_login")
-//-         br
-//-         p Student ID:
-//-         input(name = "studentId" type = "number" required placeholder = "Enter SJSU Student ID" class = "user_login")
-//-         br
-//-         p Password:
-//-         input(name = "password" type = "password" required placeholder = "Enter password" class = "user_password")
-//-         br
-//-         p Confirm Password:
-//-         input(name = "confirmPassword" type = "password" required placeholder = "Confirm password" class = "user_password")
-//-         br
-//-         button(type = "Submit" class="zone_button") Student Registeration
-
 extends loginlayout
 
 block content
@@ -30,13 +9,13 @@ block content
             input(name = "lastName" type = "text" required placeholder = "Enter Last Name" class = "user_login")
             br
             p Student &nbspID:
-            input(name = "studentId" type = "number" required placeholder = "Enter SJSU ID" class = "user_login")
+            input(name = "studentId" id="studentId" type = "text" required placeholder = "Enter SJSU ID" class = "user_login")
             br
             p Password &nbsp:
-            input(name = "password" type = "password" required placeholder = "Enter password" class = "user_password")
+            input(name = "password" id="password" type = "password" required placeholder = "Enter password" class = "user_password")
             br
             p Confirm  &nbspPassword:
-            input(name = "confirmPassword" type = "password" required placeholder = "Confirm password" class = "user_password")
+            input(name = "confirmPassword" id="confirmPassword" type = "password" required placeholder = "Confirm password" class = "user_password")
             br
-            button(type = "Submit" class="zone_button") Register
-            <a href="/">Login</a>
+            button(type = "Submit" class="zone_button" onclick="register()") Register
+           

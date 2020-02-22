@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 var cart=[];
-var user = [];
+var user = new Map();
 
 router.get('/', function(req, res) {
   let sess = req.session;
@@ -54,13 +54,16 @@ router.get('/signup', function(req, res) {
 
 router.post('/signup', function(req, res)
 {
-  user.push({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    studentId: req.body.studentId,
-    password: req.body.password,
-    confirmPassword: req.body.confirmPassword
-  })
+  var id=req.body.studentId;
+  user.set(
+    id , {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        studentId: req.body.studentId,
+        password: req.body.password,
+        confirmPassword: req.body.confirmPassword
+        }
+  );
 });
 
 router.post('/delete',function(req,res){

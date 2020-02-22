@@ -2,7 +2,38 @@ doctype html
 
 
 html
+	script(type='text/javascript').
+		function register() {
+			var password = document.getElementById("password");	
+			var confirmPassword = document.getElementById("confirmPassword");
+			var errorMessage = "";
+			
 
+			if (password.value.length < 6)
+			{
+				errorMessage +='Password should be atleast 6 characters!\n';
+			}
+			if (password.value !== confirmPassword.value)
+			{
+				errorMessage += 'Password mismatch!\n';
+			}
+			if (document.getElementById("studentId").value.length !== 9)
+			{
+				errorMessage += 'Student ID should be 9 digits.\n';
+			}
+			if(errorMessage.length > 0)
+			{
+				alert(errorMessage);
+			} else
+			{
+				fetch("/").then(res => {
+					if(res.status===200)
+						window.location.href = "/"
+			
+						
+			});
+			}
+		}
 	head
 		title SJSU Food Pantry
 		img(src='/images/logo.png')

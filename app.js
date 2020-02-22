@@ -18,6 +18,6 @@ app.use(session( {secret: "String for encrypting cookies." } ));
 app.use('/', index);
 
 module.exports = app;
-app.listen(3007,function(){
+app.listen(3000,function(){
     console.log("Node Server running on port 3000");
 });
