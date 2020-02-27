@@ -58,11 +58,12 @@ html{
     background-attachment: fixed;
     
 	height: 100%;
-  
+
 	background-position: center;
 	background-repeat: no-repeat;
     background-size: cover;
 	background-attachment: fixed;
+	
   }
 
 
@@ -139,41 +140,12 @@ html{
 	font-size: 18px;
 	font-weight: 400;
 }
-   
+ 
 .item {
 	padding: 20px 30px;
 	height: 50px;
 	display: flex;
 }
-   
-.item:nth-child(3) {
-	border-top:  1px solid #E1E8EE;
-	border-bottom:  1px solid #E1E8EE;
-}
-
-.description {
-	padding-top: 10px;
-	margin-right: 60px;
-	width: 115px;
-}
-   
-.description span {
-	display: block;
-	font-size: 14px;
-	color: #43484D;
-	font-weight: 400;
-}
-   
-.description span:first-child {
-	margin-bottom: 5px;
-}
-
-.description span:last-child {
-	font-weight: 300;
-	margin-top: 8px;
-	color: #86939E;
-}
-
 
 h3 {
   padding-top: 10px;

@@ -5,11 +5,9 @@ style.
 
 script(type='text/javascript').
   function place_order(){
-    //-  var x = document.getElementById("placeorder").elements;
-    //-  console.log(x);
+    
     if(confirm("Are you sure?"))
     {
-      //alert("Check")
       window.location.href="/orderplace"
       console.log("Check")
     }
@@ -31,8 +29,7 @@ body
     
     .shopping-cart
       .title
-        | Shopping Bag
-
+        | Shopping Bag   
       for name in items
         
         .item
