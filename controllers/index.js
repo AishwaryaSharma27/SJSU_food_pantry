@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var bodyParser = require('body-parser');
 
 var cart=[];
 var user = new Map();
@@ -18,11 +18,14 @@ router.post('/foodhome', function(req, res) {
   let sess = req.session;
     if (req.body.username === 'test' && req.body.password === 'test') {
         sess.studentId = req.body.username;
+        res.cookie('username',req.body.username)
         res.render('../views/pantryhome', { title: req.body.username });
     } else {
         res.send('Wrong username or password. Please enter test as username and password');
     }
 });
+
+
 
 router.post('/zones', function(req, res) {
     if (req.body.Logout) {
@@ -48,6 +51,9 @@ router.get('/cart', function(req, res) {
     res.render('../views/itemcart', { items: cart });
 });
 
+router.get('/orderplace', function(req, res) {
+  res.render('../views/orderplace', { items: cart });
+});
 router.get('/signup', function(req, res) {
   res.render('../views/signup');
 });
@@ -124,7 +130,9 @@ router.post('/delete',function(req,res){
 });
 
 router.post('/placeorder', function(req,res){
-	res.render('../views/orderplace');
+  console.log(req.body);
+  res.render('../views/orderplace');
+  
 });
 
 router.get('/logout', function(req, res){

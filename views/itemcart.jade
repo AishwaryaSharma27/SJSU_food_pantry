@@ -1,14 +1,51 @@
+
 html
-  style.
-     h1{ font-family: Ariel ;font-size: 50px; color:#0388fc;}
-  head
-     link(rel='stylesheet', href='/stylesheets/style.css')  
-  body
-    div(style='width: 100%; height: 50%; float:left;')
-      h1 Please review your order
+style.
+  h1{ font-family: Ariel ;font-size: 50px; color:#0388fc;}
+
+script(type='text/javascript').
+  function place_order(){
+    //-  var x = document.getElementById("placeorder").elements;
+    //-  console.log(x);
+    if(confirm("Are you sure?"))
+    {
+      //alert("Check")
+      window.location.href="/orderplace"
+      console.log("Check")
+    }
+    else
+    {
+
+    }
+  }  
+head
+  link(rel='stylesheet', href='css/style.css') 
+
+body
+
+  //div(style='width: 100%; height: 50%; float:left;')
+  include shadow_test1.html
+
+   
+  form(action="/delete", method='post')
+    
+    .shopping-cart
+      .title
+        | Shopping Bag
+
       for name in items
-        form(action="/delete", method='post')
-          h2=name
-          button(name = name type = "Submit" value=name) Delete    
-    form(action="/placeorder",method='post')        
-        button(type='submit')  Place Order   
+        
+        .item
+          h3=name
+          .quantity
+            input.quantity-field(type='number', value='4', min='1')
+                
+          p.stockStatus  In Stock
+            
+          .cartSection.removeWrap
+          a.remove(href='#') x
+
+
+            button(name = name type = "Submit" value=name) Delete    
+        
+  button(onClick="place_order()" type='submit')  Place Order   
