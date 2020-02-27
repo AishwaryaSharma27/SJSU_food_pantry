@@ -190,8 +190,18 @@ html,body {
 	font-family: 'Roboto', sans-serif;
 }
 .quantity {
-	padding-top: 20px;
-	margin-right: 60px;
+	/* padding-top: 20px;
+	margin-right: 60px; */
+	width: 15%;
+}
+
+.quantity-field {
+	background-color: #ccc;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	font-size: 0.625rem;
+	padding: 2px;
+	width: 3.75rem;
 }
 
 .quantity input {
@@ -204,92 +214,7 @@ html,body {
 	font-weight: 300;
 }
    
-button[class*=btn] {
-	width: 5px;
-	height: 5px;
-	background-color: #E1E8EE;
-	border-radius: 6px;
-	border: none;
-	cursor: pointer;
-}
-.minus-btn img {
-	margin-bottom: 3px;
-}
-.plus-btn img {
-	margin-top: 2px;
-}
-   
-button:focus,
-  input:focus {
-	outline:0;
-}
 
-.dropbtn {
-	background-color: #4CAF50;
-	color: white;
-	padding: 16px;
-	font-size: 16px;
-	border: none;
-}
-  
-
-
-.dropdown {
-	position: relative;
-	display: inline-block;
-}
-  
-.dropdown-content {
-	display: none;
-	position: absolute;
-	background-color: #f1f1f1;
-	min-width: 160px;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	z-index: 1;
-}
-  
-  
-.dropdown-content a {
-	color: black;
-	padding: 12px 16px;
-	text-decoration: none;
-	display: block;
-}
-
-
-  
-
-.dropdown-content a:hover {background-color: #ddd;}
-
-.dropdown:hover .dropdown-content {display: block;}
-
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
-
-
-
-/* .cart {
-	padding: 1em 0 ;
-   
-	.items {
-	  display: block;
-	  width: 100%;
-	  vertical-align: middle;
-	  padding: 1.5em;
-	 
-	  border-bottom: 1px solid #fafafa;
-	  
-	  .cartSection {
-		  display: table-cell;
-		  vertical-align: middle;
-		
-		
-		.itemNumber {
-			font-size: .75em;
-			color: #777;
-			margin-bottom: .5em;
-		}
-	}
-} */
 
 ul {
 	list-style: none;

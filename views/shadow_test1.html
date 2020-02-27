@@ -1,25 +1,38 @@
 
-<!DOCTYPE html>
-<html>
-<body>
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Shadows</title>
+    <meta charset = "UTF-8" />
+    <body>
+        <canvas id="myCanvas" width="700" height="100" style="border:1px solid #d3d3d3;"></canvas>
+    </body>
+    <script type = "text/javascript">
+   
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
 
-<canvas id="myCanvas" width="700" height="100" style="border:1px solid #d3d3d3;">
-Your browser does not support the HTML5 canvas tag.</canvas>
-
-<script>
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    // Create gradient
-    var grd = ctx.createLinearGradient(0,0,200,0);
-    grd.addColorStop(0,"red");
-    grd.addColorStop(1,"brown");
-    // Fill with gradient
-    ctx.fillStyle = grd;
-    ctx.fillRect(0,0,700,100);
-    ctx.font = "40pt sans-serif";
-    ctx.fillStyle = "white";
-    ctx.fillText("Check out your items today!!", 1, 65);
-</script>
-
+        function draw()
+        {
+            let counter = 0;
+            setInterval(function() {
+                // Create gradient
+                var grd = ctx.createLinearGradient(0,0,200,0);
+                ctx.fillStyle = (counter % 2 === 0) ? 'red' : 'brown';
+               
+                // Fill with gradient
+                ctx.fillRect(0,0,700,100);
+                ctx.font = "40pt sans-serif";
+                ctx.fillStyle = "white";
+                ctx.fillText("Check out your items today!!", 1, 65);
+                counter++;
+            }, 3000);
+            requestAnimationFrame(draw);
+        }
+     
+    </script>
+</head>
+<body onload = "draw()">
 </body>
 </html>
+
