@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var index = require('./controllers/index');
 var app = express();
+const connectDB = require("./config/db");
 
 //View engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -16,6 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session( {secret: "String for encrypting cookies." } ));
 
 app.use('/', index);
+connectDB();
 
 module.exports = app;
 app.listen(3000,function(){

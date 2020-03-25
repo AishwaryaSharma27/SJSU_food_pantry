@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
+const config = require("config");
+
+const User = require("../models/user");
 
 var cart=[];
 var user = new Map();
@@ -70,7 +73,32 @@ router.post('/signup', function(req, res)
         confirmPassword: req.body.confirmPassword
         }
   );
+
+
+  const { firstName, lastName,studentId,password } = req.body;
+  User.findOne({ studentId }).then(user => {
+    if (user) {
+      return res
+        .status(400)
+        .json({ errors: [{ msg: "User already exists" }] });
+    } else {
+      const user = new User({
+        firstName,
+        lastName,
+        studentId,
+        password
+      });
+
+      
+          user
+            .save()
+            .then(console.log("done"))
+            .catch(err => console.log(err));
+    }
+  });
+
 });
+
 
 router.post('/delete',function(req,res){
 
