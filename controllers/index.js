@@ -22,7 +22,7 @@ router.post('/foodhome', function(req, res) {
     if (req.body.username === 'test' && req.body.password === 'test') {
         sess.studentId = req.body.username;
         res.cookie('username',req.body.username)
-        res.render('../views/pantryhome', { title: req.body.username });
+        res.render('../views/pantryhome', { title:"013728598" });
     } else {
         res.send('Wrong username or password. Please enter test as username and password');
     }
@@ -98,6 +98,32 @@ router.post('/signup', function(req, res)
   });
 
 });
+
+router.get('/profile/:title',function(req,res){
+  var studentId=req.params.title;
+  console.log(studentId)
+  res.render('../views/profile', { "username" : studentId} );
+})
+
+router.get('/deleteprofile/:username',function(req,res){
+       var studentId=req.params.username;
+       console.log("in delete",studentId)
+       res.render('../views/deleteuser', {"studentID" : studentId} );
+})
+
+router.post('/deleteuser/:studentID',function(req,res){
+  var studentId=req.params.studentID;
+  User.findOneAndDelete({studentID:studentId},function(err){
+    if(!err){
+      console.log("Modification");
+      res.send("Deleted User");
+    }
+    else{
+      console.log("not FOund");
+    }
+  })
+})
+
 
 
 router.post('/delete',function(req,res){

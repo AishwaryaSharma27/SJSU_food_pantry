@@ -16,6 +16,8 @@ html
 				button(type = "Submit" class="zone_button" onclick="logout()") Logout
 				a(href="/cart")	        			
 					img(class='cart' src='/images/icons8-favorite-cart-64.png')
+				a(href="/profile/#{title}")
+					h2='Profile'
 			link(rel='stylesheet', href='/css/style.css')
 		body 
 			block content
