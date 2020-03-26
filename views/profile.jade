@@ -2,4 +2,5 @@ extends homelayout
 block content
     h1 User
     p  #{username}
+    a(href="/updateprofile/#{username}") Update User
     a(href="/deleteprofile/#{username}") Delete User
