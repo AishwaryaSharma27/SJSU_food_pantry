@@ -2,5 +2,17 @@ extends homelayout
 block content
     h1 User
     p  #{username}
-    a(href="/updateprofile/#{username}") Update User
+    br
+    br
     a(href="/deleteprofile/#{username}") Delete User
+    form(name="updateuser",method="post",action="/updateuser/#{username}")
+        p First &nbspName:
+        input(name = "firstName" type = "text" required placeholder = "Enter First Name" class = "user_login")
+        br
+        p Last &nbspName:
+        input(name = "lastName" type = "text" required placeholder = "Enter Last Name" class = "user_login")
+        br
+        p Student &nbspID:
+        input(name = "studentId" id="studentId" type = "text" required placeholder = "Enter SJSU ID" class = "user_login")
+        br
+        button(type="submit") Update
