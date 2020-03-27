@@ -7,6 +7,9 @@ const User = require("../models/user");
 const Products=require("../models/products");
 var cart=[];
 var user = new Map();
+var firstName="";
+var lastName="";
+var studentId="";
 var search="";
 router.get('/', function(req, res) {
   let sess = req.session;
@@ -19,16 +22,25 @@ router.get('/', function(req, res) {
 
 router.post('/foodhome', function(req, res) {
   let sess = req.session;
-    if (req.body.username === 'test' && req.body.password === 'test') {
+
+  User.findOne({studentId:req.body.username,password:req.body.password}).then(item=>{
+       if(item){
         sess.studentId = req.body.username;
         res.cookie('username',req.body.username)
-        res.render('../views/pantryhome', { title:"34567890" });
+        console.log(item.firstName);
+        firstName=item.firstName;
+        lastName=item.lastName;
+        studentId=item.studentId;
+        res.render('../views/pantryhome', { title:item.firstName});
         
-        
-}
-     else {
-        res.send('Wrong username or password. Please enter test as username and password');
+       }
+       else {
+      
+        res.send('Wrong username or password. or User not found,Please Signin');
     }
+  });
+    
+    
 });
 
 router.post('/submitsearch', function(req, res) {
@@ -160,10 +172,10 @@ router.post('/signup', function(req, res)
 });
 
 router.get('/profile/:title',function(req,res){
-  var studentId=req.params.title;
-  console.log(studentId)
-  res.render('../views/profile', { "username" : studentId} );
-})
+  var studentID=req.params.title;
+  console.log(firstName)
+  res.render('../views/profile', { "username" : studentID,"firstName":firstName,"lastName":lastName,"studentId":studentId} );
+})  
 
 router.get('/deleteprofile/:username',function(req,res){
        var studentId=req.params.username;
@@ -187,14 +199,15 @@ router.post('/deleteuser/:studentID',function(req,res){
 router.post('/updateuser/:username',function(req,res){
   var studentID=req.params.username;
   console.log("in update",req.body);
+  console.log("sd",studentId)
   const{firstName,lastName}=req.body;
   const profileFields={};
   profileFields.firstName=firstName;
   profileFields.lastName=lastName;
   profileFields.studentId=req.body.studentId;
-  User.findOne({studentId:studentID}).then(profile =>{
+  User.findOne({studentId:studentId}).then(profile =>{
     if(profile){
-      User.findOneAndUpdate({ studentId: studentID },
+      User.findOneAndUpdate({ studentId: studentId },
         { $set: profileFields },
         { new: true }).then(updatedProfile => res.send("Updated Profile"))
     }
