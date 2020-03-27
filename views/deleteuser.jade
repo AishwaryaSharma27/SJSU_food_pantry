@@ -1,0 +1,14 @@
+//- extends homelayout
+//- block content
+//-     h1 Delete User
+//-     p OK to delete #{studentID}?
+    form(name="adduser",method="post",action="/deleteuser/#{studentID}")
+        button(type="submit") Delete
+
+
+extends homelayout
+block content
+    h1 Delete User
+    p  Ok to delete #{studentID}
+    form(name="deleteuser",method="post",action="/deleteuser/#{studentID}")
+        button(type="submit") Delete

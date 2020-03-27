@@ -22,7 +22,7 @@ router.post('/foodhome', function(req, res) {
     if (req.body.username === 'test' && req.body.password === 'test') {
         sess.studentId = req.body.username;
         res.cookie('username',req.body.username)
-        res.render('../views/pantryhome', { title: req.body.username });
+        res.render('../views/pantryhome', { title:"34567890" });
     } else {
         res.send('Wrong username or password. Please enter test as username and password');
     }
@@ -99,6 +99,55 @@ router.post('/signup', function(req, res)
 
 });
 
+router.get('/profile/:title',function(req,res){
+  var studentId=req.params.title;
+  console.log(studentId)
+  res.render('../views/profile', { "username" : studentId} );
+})
+
+router.get('/deleteprofile/:username',function(req,res){
+       var studentId=req.params.username;
+       console.log("in delete",studentId)
+       res.render('../views/deleteuser', {"studentID" : studentId} );
+})
+
+router.post('/deleteuser/:studentID',function(req,res){
+  var studentID=req.params.studentID;
+  User.findOneAndDelete({studentId:studentID},function(err){
+    if(!err){
+      console.log("Modification");
+      res.send("Deleted User");
+    }
+    else{
+      console.log("not FOund");
+    }
+  })
+})
+
+router.post('/updateuser/:username',function(req,res){
+  var studentID=req.params.username;
+  console.log("in update",req.body);
+  const{firstName,lastName}=req.body;
+  const profileFields={};
+  profileFields.firstName=firstName;
+  profileFields.lastName=lastName;
+  profileFields.studentId=req.body.studentId;
+  User.findOne({studentId:studentID}).then(profile =>{
+    if(profile){
+      User.findOneAndUpdate({ studentId: studentID },
+        { $set: profileFields },
+        { new: true }).then(updatedProfile => res.send("Updated Profile"))
+    }
+  })
+  //   if(!err){
+  //     console.log("Modification");
+  //     res.send("Deleted User");
+  //   }
+  //   else{
+  //     console.log("not FOund");
+  //   }
+  // })
+})
 
 router.post('/delete',function(req,res){
 
