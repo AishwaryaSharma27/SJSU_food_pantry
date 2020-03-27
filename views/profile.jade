@@ -4,7 +4,7 @@ block content
     h1  #{username}
     br
     br
-    a(href="/deleteprofile/#{username}") Delete User
+    a(href="/deleteprofile/#{studentId}") Delete User
     form(name="updateuser",method="post",action="/updateuser/#{username}")
         p First &nbspName: 
         input(name = "firstName" type = "text" required placeholder = "Enter First Name" class = "user_login" value="#{firstName}")

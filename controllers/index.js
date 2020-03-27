@@ -177,8 +177,8 @@ router.get('/profile/:title',function(req,res){
   res.render('../views/profile', { "username" : studentID,"firstName":firstName,"lastName":lastName,"studentId":studentId} );
 })  
 
-router.get('/deleteprofile/:username',function(req,res){
-       var studentId=req.params.username;
+router.get('/deleteprofile/:studentId',function(req,res){
+       var studentId=req.params.studentId;
        console.log("in delete",studentId)
        res.render('../views/deleteuser', {"studentID" : studentId} );
 })
