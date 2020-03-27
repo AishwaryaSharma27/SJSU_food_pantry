@@ -18,9 +18,9 @@ html
 					img(class='cart' src='/images/icons8-favorite-cart-64.png')
 				.wrap
 				.search
-					input.searchTerm(type='text', placeholder='What are you looking for?')
-					button.searchButton(type='submit')
-						i.fa.fa-search
+				form(name="submitsearch",method="post",action="/submitsearch")
+					input(type='text', placeholder='What are you looking for?' ,name="search")
+					button.searchButton(type='submit') Submit
 				a(href="/profile/#{title}")
 					h2='Profile'
 			link(rel='stylesheet', href='/css/style.css')

@@ -4,10 +4,10 @@ var bodyParser = require('body-parser');
 const config = require("config");
 
 const User = require("../models/user");
-
+const Products=require("../models/products");
 var cart=[];
 var user = new Map();
-
+var search="";
 router.get('/', function(req, res) {
   let sess = req.session;
   if(sess.studentId)
@@ -23,11 +23,67 @@ router.post('/foodhome', function(req, res) {
         sess.studentId = req.body.username;
         res.cookie('username',req.body.username)
         res.render('../views/pantryhome', { title:"34567890" });
-    } else {
+        
+        
+}
+     else {
         res.send('Wrong username or password. Please enter test as username and password');
     }
 });
 
+router.post('/submitsearch', function(req, res) {
+  var search=req.body.search;
+  Products.findOne({productName:search}).then(product => {
+    if(product)
+    {
+      var zone=product.zoneNumber
+
+      console.log(zone);
+      if (zone=="zone1") {
+        res.render('../views/zone1', { title: 'zone1', name: 'zone1' });
+    } else if (zone=="zone2") {
+        res.render('../views/zone2', { title: 'zone2', name: 'zone2' });
+    } else {
+        res.render('../views/zone3', { title: 'zone3', name: 'zone3' });
+    }
+      
+    }
+    else
+    {
+    res
+    .status(400)
+    .json({ errors: [{ msg: "No product found" }] });
+    };
+    // product.exec(function (err, products) {
+    //   if (err) return handleError(err);
+//});
+});
+});
+
+router.post('/submititem', function(req, res) {
+  var search=req.body.search;
+  var result=[]
+  Products.find({zoneNumber:search}).then(product => {
+  
+    if(product)
+    {
+   
+      product.forEach(item=>{
+        result.push(item.productName);
+      });
+       res.render('../views/displayResult',{items:result});
+    }
+    else
+    {
+    res
+    .status(400)
+    .json({ errors: [{ msg: "No zones found" }] });
+    };
+    // product.exec(function (err, products) {
+    //   if (err) return handleError(err);
+//});
+});
+});
 
 
 router.post('/zones', function(req, res) {
@@ -52,6 +108,10 @@ router.post('/cart', function(req, res) {
 
 router.get('/cart', function(req, res) {
     res.render('../views/itemcart', { items: cart });
+});
+
+router.get('/searchitem', function(req, res) {
+  res.render('../views/displaySearch', { items: cart });
 });
 
 router.get('/orderplace', function(req, res) {
