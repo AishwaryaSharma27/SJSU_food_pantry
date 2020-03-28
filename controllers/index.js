@@ -195,6 +195,7 @@ router.post('/deleteuser/:studentID',function(req,res){
   User.findOneAndDelete({studentId:studentID},function(err){
     if(!err){
       console.log("Deleting User: ",firstName);
+      console.log("Deleting Document ");
       res.send("Deleted User");
     }
     else{
