@@ -10,21 +10,29 @@ html
 				});
 			}
 		head
-			div(class='header_class')
-				h2= 'Contact Us!'
-				img(class='logo' src='/images/logo.png')
-				button(type = "Submit" class="zone_button" onclick="logout()") Logout
-				a(href="/cart")	        			
-					img(class='cart' src='/images/icons8-favorite-cart-64.png')
-				.wrap
-				.search
-				form(name="submitsearch",method="post",action="/submitsearch")
-					input(type='text', placeholder='What are you looking for?' ,name="search")
-					button.searchButton(type='submit') Submit
-				a(href="/profile/#{title}")
-					h2='Profile'
 			link(rel='stylesheet', href='/css/style.css')
-			
+
+			div(class='header_class')
+		
+				a(href="/profile/#{title}")
+					h3 Profile
+
+				img(class='logo' src='/images/logo.png')
+
+				button(type = "Submit" class="logout_button" onclick="logout()") Logout
+				div 
+					a(href="/cart")	        			
+						img(class='cart' src='/images/icons8-favorite-cart-64.png')
+					
+					.wrap
+					.search
+					form(name="submitsearch",method="post",action="/submitsearch")
+						input(type='text', placeholder='Search Items...' ,name="search")
+						button.searchButton(type='submit') Submit
+
+					form(name="submititem",method="post",action="/submititem")
+						input(type='text', placeholder='Display Zone Items...', name="search")
+						button.searchButton(type='submit') Submit
 
 		body 
 			block content

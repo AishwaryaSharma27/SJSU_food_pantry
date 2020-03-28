@@ -2,6 +2,8 @@
 	height: 120px;
     width: 120px;
 	background-color: none;
+	float: center;
+	text-align: center;
 }
 
 img {
@@ -15,6 +17,7 @@ img {
 	width: 80px;
 	float: right;
 	background-color: none;
+	text-align: right;
 }
 
 .header_class {
@@ -32,6 +35,19 @@ h2 {
 	font-size: 18px;
 	float: left;
 }
+
+h3 {
+	font: 1em sans-serif;
+	position: absolute;
+	font-size: 50px; 
+	text-combine-upright: auto;
+	top: 100px;
+	color: rgb(209, 206, 50);
+	font-size: 18px;
+	text-align: left;
+	text-shadow: 0 1px 0 black;
+}
+
 
 h1{
     font-family: Arial, Helvetica, sans-serif ;
@@ -66,7 +82,19 @@ html{
 	
   }
 
-
+.logout_button{
+	background:#bbdd3f; 
+	border:none; 
+	border-radius: 10px; 
+	width:150px; 
+	height:36px; 
+	cursor:pointer; 	
+	font-family:open Sans; 
+	font-weight:700px; 
+	font-size:15px; 
+	color:#FFFFFF; 
+	float:right;
+}
 .zone_button{ 
 	background:#0388fc; 
 	border:none; 
@@ -212,7 +240,7 @@ li {
 
 .searchTerm {
   width: 100%;
-  border: 3px solid rgb(7, 8, 8);
+  border: 3px solid rgb(137, 182, 182);
   border-right: none;
   padding: 5px;
   height: 20px;
@@ -225,17 +253,18 @@ li {
   color: rgb(5, 8, 8);
 }
 
-.searchButton {
-  width: 40px;
-  height: 36px;
-  border: 1px solid rgb(12, 15, 15);
-  background: #00B4CC;
-  text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
-}
+.searchButton{ 
+	background:#a9bac9; 
+	border:none;  
+	width:200px; 
+	height:20px; 
+	cursor:pointer; 
+	font-family:open Sans; 
+	font-weight:700px; 
+	font-size:15px; 
+	color:#FFFFFF; 
+}	
+
 
 /*Resize the wrap to see the search bar change!*/
 .wrap{
@@ -245,4 +274,109 @@ li {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-		
+
+.wrapper{
+	display: flex;
+	position: relative;
+  }
+  
+  .wrapper .sidebar{
+	width: 200px;
+	height: 100%;
+	background: #4b4276;
+	padding: 30px 0px;
+	position: fixed;
+  }
+  
+  .wrapper .sidebar h2{
+	color: #fff;
+	text-transform: uppercase;
+	text-align: left;
+	margin-bottom: 30px;
+  }
+  
+  .wrapper .sidebar ul li{
+	padding: 15px;
+	border-bottom: 1px solid #bdb8d7;
+	border-bottom: 1px solid rgba(0,0,0,0.05);
+	border-top: 1px solid rgba(255,255,255,0.05);
+  }    
+  
+  .wrapper .sidebar ul li a{
+	color: #bdb8d7;
+	display: block;
+  }
+  
+  .wrapper .sidebar ul li a .fas{
+	width: 25px;
+  }
+  
+  .wrapper .sidebar ul li:hover{
+	background-color: #594f8d;
+  }
+	  
+  .wrapper .sidebar ul li:hover a{
+	color: #fff;
+  }
+   
+  .wrapper .sidebar .social_media{
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+  }
+  
+  .wrapper .sidebar .social_media a{
+	display: block;
+	width: 40px;
+	background: #594f8d;
+	height: 40px;
+	line-height: 45px;
+	text-align: center;
+	margin: 0 5px;
+	color: #bdb8d7;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+  }
+  
+  .wrapper .main_content{
+	width: 100%;
+	margin-left: 200px;
+  }
+  
+  .wrapper .main_content .header{
+	padding: 20px;
+	background: #fff;
+	color: #717171;
+	border-bottom: 1px solid #e0e4e8;
+  }
+  
+  .wrapper .main_content .info{
+	margin: 20px;
+	color: #717171;
+	line-height: 25px;
+  }
+  
+  .wrapper .main_content .info div{
+	margin-bottom: 20px;
+  }
+  
+  @media (max-height: 500px){
+	.social_media{
+	  display: none !important;
+	}
+  }
+
+  .top-left {
+	position: absolute;
+	top: 8px;
+	left: 16px;
+  }
+
+  .mycontainer {
+	position: relative;
+	text-align: center;
+	color: white;
+  }
+  

@@ -1,0 +1,18 @@
+extends homelayout
+block content
+    h1 User
+    h1  #{username}
+    br
+    br
+    a(href="/deleteprofile/#{studentId}") Delete User
+    form(name="updateuser",method="post",action="/updateuser/#{username}")
+        p First &nbspName: 
+        input(name = "firstName" type = "text" required placeholder = "Enter First Name" class = "user_login" value="#{firstName}")
+        br
+        p Last &nbspName:
+        input(name = "lastName" type = "text" required placeholder = "Enter Last Name" class = "user_login" value="#{lastName}")
+        br
+        p Student &nbspID:
+        input(name = "studentId" id="studentId" type = "text" required placeholder = "Enter SJSU ID" class = "user_login" value="#{studentId}")
+        br
+        button(type="submit") Update

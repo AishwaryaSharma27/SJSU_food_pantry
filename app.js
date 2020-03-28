@@ -6,6 +6,7 @@ var session = require('express-session');
 var index = require('./controllers/index');
 var app = express();
 const connectDB = require("./config/db");
+var additems = require("./models/addItems")
 
 //View engine setup
 app.set('views', path.join(__dirname, 'views'));
