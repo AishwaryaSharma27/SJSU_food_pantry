@@ -48,9 +48,11 @@ router.post('/submitsearch', function(req, res) {
   Products.findOne({productName:search}).then(product => {
     if(product)
     {
+      
       var zone=product.zoneNumber
-
-      console.log(zone);
+      console.log("Search Result Document for",search);
+      console.log(search +" belongs to "+zone);
+      console.log(product)
       if (zone=="zone1") {
         res.render('../views/zone1', { title: 'zone1', name: 'zone1' });
     } else if (zone=="zone2") {
@@ -76,10 +78,11 @@ router.post('/submititem', function(req, res) {
   var search=req.body.search;
   var result=[]
   Products.find({zoneNumber:search}).then(product => {
-  
+      
     if(product)
     {
-   
+      console.log("Display Result Documents for",search);
+      console.log(product);
       product.forEach(item=>{
         result.push(item.productName);
       });
@@ -136,6 +139,7 @@ router.get('/signup', function(req, res) {
 router.post('/signup', function(req, res)
 {
   var id=req.body.studentId;
+  console.log(id);
   user.set(
     id , {
         firstName: req.body.firstName,
@@ -164,7 +168,10 @@ router.post('/signup', function(req, res)
       
           user
             .save()
-            .then(console.log("done"))
+            .then(student=>{
+              console.log("Insert Document for User",firstName);
+              console.log(student);
+            })
             .catch(err => console.log(err));
     }
   });
@@ -187,7 +194,7 @@ router.post('/deleteuser/:studentID',function(req,res){
   var studentID=req.params.studentID;
   User.findOneAndDelete({studentId:studentID},function(err){
     if(!err){
-      console.log("Modification");
+      console.log("Deleting User: ",firstName);
       res.send("Deleted User");
     }
     else{
@@ -209,8 +216,13 @@ router.post('/updateuser/:username',function(req,res){
     if(profile){
       User.findOneAndUpdate({ studentId: studentId },
         { $set: profileFields },
-        { new: true }).then(updatedProfile => res.send("Updated Profile"))
-    }
+        { new: true }).then(updatedProfile => {
+          console.log("Updating the user document for: ",firstName)
+          console.log(updatedProfile);
+          res.send("Updated Profile")
+        })
+      }
+    
   })
   //   if(!err){
   //     console.log("Modification");
