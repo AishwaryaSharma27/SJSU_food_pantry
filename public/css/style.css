@@ -379,4 +379,20 @@ li {
 	text-align: center;
 	color: white;
   }
+
+
+  
+  .dashboard {
+	background-color: lightblue;
+	border: solid 5px #0383f3;
+	color: white;
+	padding: 1em 1em;
+	text-decoration: none;
+	text-align: center;
+	text-transform: uppercase;
+	position: absolute;
+   	top: 0px;
+   	right: 0px;
+  }
+  
   
