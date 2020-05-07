@@ -39,10 +39,11 @@ router.post('/foodhome', function(req, res) {
          
           console.log("here");
           // res.render('../public/html/dashboard.html')
-          res.sendFile(__dirname + '/dashboard.html');
+          res.render('../views/adminlayout', { title:item.firstName});
         }
-        // res.render('../views/pantryhome', { title:item.firstName});
-        
+        else{
+          res.render('../views/pantryhome', { title:item.firstName});
+      }
        }
        else {
       
