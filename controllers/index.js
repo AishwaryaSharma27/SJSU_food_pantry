@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var app = express();
 var bodyParser = require('body-parser');
 const config = require("config");
-
+var path    = require("path");
 const User = require("../models/user");
 const Products=require("../models/products");
 var cart=[];
@@ -11,6 +12,8 @@ var firstName="";
 var lastName="";
 var studentId="";
 var search="";
+app.use(express.static(__dirname + 'public'));
+
 router.get('/', function(req, res) {
   let sess = req.session;
   if(sess.studentId)
@@ -31,7 +34,14 @@ router.post('/foodhome', function(req, res) {
         firstName=item.firstName;
         lastName=item.lastName;
         studentId=item.studentId;
-        res.render('../views/pantryhome', { title:item.firstName});
+
+        if(item.admin =="true"){
+         
+          console.log("here");
+          // res.render('../public/html/dashboard.html')
+          res.sendFile(__dirname + '/dashboard.html');
+        }
+        // res.render('../views/pantryhome', { title:item.firstName});
         
        }
        else {
@@ -170,7 +180,7 @@ router.post('/signup', function(req, res)
             .save()
             .then(student=>{
               console.log("Insert Document for User",firstName);
-              console.log(student);
+              res.send("Okay");
             })
             .catch(err => console.log(err));
     }
