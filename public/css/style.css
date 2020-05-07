@@ -173,16 +173,21 @@ html{
 	padding: 20px 30px;
 	height: 50px;
 	display: flex;
+	color: rgb(209, 206, 50);
+	font-size: 18px;
+	
+
 }
 
-h3 {
-  padding-top: 10px;
-  margin-right: 60px;
-  width: 115px;
+.item:nth-child(3) {
+	border-top:  1px solid #E1E8EE;
+	border-bottom:  1px solid #E1E8EE;
 }
 
 
-  
+ 
+
+
 html,body {
 	width: 100%;
 	height: 100%;

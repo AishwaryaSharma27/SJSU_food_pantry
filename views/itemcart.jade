@@ -32,8 +32,8 @@ body
         | Shopping Bag   
       for name in items
         
-        .item
-          h3=name
+        .item=name
+          
           .quantity
             input.quantity-field(type='number', value='4', min='1')
                 
