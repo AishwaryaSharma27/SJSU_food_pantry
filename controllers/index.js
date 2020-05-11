@@ -16,6 +16,7 @@ app.use(express.static(__dirname + 'public'));
 
 router.get('/', function(req, res) {
   let sess = req.session;
+  cart=[];
   if(sess.studentId)
   {
     res.render('../views/pantryhome', { title: sess.studentId });
@@ -43,7 +44,7 @@ router.post('/pantryhome', function(req, res) {
         }
         else{
           res.render('../views/pantryhome', { title:item.firstName});
-      }
+         }
        }
        else {
       
@@ -268,14 +269,7 @@ router.post('/updateuser/:username',function(req,res){
       }
     
   })
-  //   if(!err){
-  //     console.log("Modification");
-  //     res.send("Deleted User");
-  //   }
-  //   else{
-  //     console.log("not FOund");
-  //   }
-  // })
+
 })
 
 router.post('/delete',function(req,res){
