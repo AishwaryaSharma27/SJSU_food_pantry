@@ -52,6 +52,14 @@
         var viz = new tableau.Viz(containerDiv, url,options);
     }
    </script>
+   <script type='text/javascript'>
+    function logout() {
+            fetch("/logout").then(res => {
+                if(res.status===200)
+                    window.location.href = "/"
+            });
+        }
+</script>
 </head>
 <body onload="initViz()">
 
@@ -161,8 +169,8 @@
                                 <li><a href="#">Analysis</a></li>
                               </ul>
                         </li>
-                        <li>
-                            <a href="#">
+                        <li onclick="logout()">
+                            <a >
                                 <p>Log out</p>
                             </a>
                         </li>

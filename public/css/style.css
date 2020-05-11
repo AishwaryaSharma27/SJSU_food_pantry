@@ -1,9 +1,17 @@
 .header_class .logo {
-	height: 120px;
-    width: 120px;
+	height: 150px;
+    width: 150px;
 	background-color: none;
-	float: center;
+	float: left;
 	text-align: center;
+}
+.header_class{
+	width: 1500px;
+	height: 150px;
+}
+
+.display{
+	display: inline;
 }
 
 img {
@@ -13,9 +21,11 @@ img {
 }
 
 .header_class .cart{
-	height: 80px;
-	width: 80px;
+	height: 50px;
+	width: 50px;
 	float: right;
+	top:50%;
+	padding-right: 10px;
 	background-color: none;
 	text-align: right;
 }
@@ -274,10 +284,10 @@ li {
 /*Resize the wrap to see the search bar change!*/
 .wrap{
   width: 30%;
-  position: absolute;
-  top: 50%;
+  /* position: absolute; */
+  /* top: 50%; */
   left: 50%;
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
 }
 
 .wrapper{

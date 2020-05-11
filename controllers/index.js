@@ -23,7 +23,7 @@ router.get('/', function(req, res) {
     res.render('../views/login', { title: '' });
 });
 
-router.post('/foodhome', function(req, res) {
+router.post('/pantryhome', function(req, res) {
   let sess = req.session;
 
   User.findOne({studentId:req.body.username,password:req.body.password}).then(item=>{
@@ -35,7 +35,7 @@ router.post('/foodhome', function(req, res) {
         lastName=item.lastName;
         studentId=item.studentId;
 
-        if(item.admin =="true"){
+        if(item.role =="admin"){
          
           console.log("here");
           // res.render('../public/html/dashboard.html')
@@ -126,6 +126,7 @@ router.post('/zones', function(req, res) {
 
 router.post('/cart', function(req, res) {
     var arr1 = Object.keys(req.body);
+    cart=[];
     arr1.map(item=>{
     	cart.push(item);
     })
@@ -133,15 +134,44 @@ router.post('/cart', function(req, res) {
 });
 
 router.get('/cart', function(req, res) {
+  let sess = req.session;
+  if(sess.studentId)
+  {
     res.render('../views/itemcart', { items: cart });
+  }
+    res.render('../views/login', { title: '' });
+    
+});
+
+router.get('/pantryhome', function(req, res) {
+  cart=[];
+  let sess = req.session;
+  if(sess.studentId)
+  {
+    res.render('../views/pantryhome');
+  }
+    res.render('../views/login', { title: '' });
+
 });
 
 router.get('/searchitem', function(req, res) {
-  res.render('../views/displaySearch', { items: cart });
+  let sess = req.session;
+  if(sess.studentId)
+  {
+    res.render('../views/displaySearch', { items: cart });
+  }
+    res.render('../views/login', { title: '' });
+
 });
 
 router.get('/orderplace', function(req, res) {
-  res.render('../views/orderplace', { items: cart });
+  let sess = req.session;
+  if(sess.studentId)
+  {  
+    res.render('../views/orderplace', { items: cart });
+  }
+    res.render('../views/login', { title: '' });
+
 });
 router.get('/signup', function(req, res) {
   res.render('../views/signup');
@@ -150,19 +180,20 @@ router.get('/signup', function(req, res) {
 router.post('/signup', function(req, res)
 {
   var id=req.body.studentId;
-  console.log(id);
+  console.log(req.body);
   user.set(
     id , {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         studentId: req.body.studentId,
         password: req.body.password,
-        confirmPassword: req.body.confirmPassword
+        confirmPassword: req.body.confirmPassword,
+        admin:req.body.role
         }
   );
 
 
-  const { firstName, lastName,studentId,password } = req.body;
+  const { firstName, lastName,studentId,password,role} = req.body;
   User.findOne({ studentId }).then(user => {
     if (user) {
       return res
@@ -173,7 +204,8 @@ router.post('/signup', function(req, res)
         firstName,
         lastName,
         studentId,
-        password
+        password,
+        role
       });
 
       
@@ -305,7 +337,8 @@ router.post('/delete',function(req,res){
 
 router.post('/placeorder', function(req,res){
   console.log(req.body);
-  res.render('../views/orderplace');
+  alert("Order placed");
+  // res.render('../views/orderplace');
   
 });
 

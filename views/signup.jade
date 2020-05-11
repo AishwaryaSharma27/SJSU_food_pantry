@@ -8,7 +8,13 @@ block content
             p Last &nbspName:
             input(name = "lastName" type = "text" required placeholder = "Enter Last Name" class = "user_login")
             br
-            p Student &nbspID:
+            
+            p Select &nbspRole:
+            select#role(name='role')
+                option(value='admin') Admin
+                option(value='student') Student
+            br
+            p Student/Admin &nbspID:
             input(name = "studentId" id="studentId" type = "text" required placeholder = "Enter SJSU ID" class = "user_login")
             br
             p Password &nbsp:

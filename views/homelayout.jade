@@ -14,18 +14,19 @@ html
 
 			div(class='header_class')
 		
-				a(href="/profile/#{title}")
-					h3 Profile
 
-				img(class='logo' src='/images/logo.png')
+				div(class="display")
+					img(class='logo' src='/images/logo.png')
 
+				a
 				button(type = "Submit" class="logout_button" onclick="logout()") Logout
+				button(onclick="window.location.href='/profile/#{title}'" class="logout_button") Profile
 				div 
 					a(href="/cart")	        			
 						img(class='cart' src='/images/icons8-favorite-cart-64.png')
 					
-					.wrap
-					.search
+					//- .wrap
+					//- .search
 					form(name="submitsearch",method="post",action="/submitsearch")
 						input(type='text', placeholder='Search Items...' ,name="search")
 						button.searchButton(type='submit') Submit
